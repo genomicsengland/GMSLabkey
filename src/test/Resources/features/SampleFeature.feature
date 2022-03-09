@@ -1,8 +1,7 @@
-@general
-Feature: This is a sample feature
+@login
+Feature: Validation Performed for Login
 
-  Scenario:Sample scenario
-
-    Given application is up and running
-    When the user login to the application with valid credentials
-    Then the user should be be navigated to the application home page
+  Scenario : Validation Performed for Login
+    Given the user launches the Labkey application
+    And the user is logged into Labkey
+    When the user navigates to main-programme project

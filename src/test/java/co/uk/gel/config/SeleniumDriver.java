@@ -1,11 +1,12 @@
 package co.uk.gel.config;
 
 
+import co.uk.gel.lib.SeleniumLib;
 import co.uk.gel.proj.util.Debugger;
 import cucumber.api.java.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
-import co.uk.gel.lib.SeleniumLib;
+
 import java.util.concurrent.TimeUnit;
 
 public class SeleniumDriver extends EventFiringWebDriver {

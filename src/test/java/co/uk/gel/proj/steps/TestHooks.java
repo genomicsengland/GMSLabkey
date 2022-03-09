@@ -1,9 +1,9 @@
 package co.uk.gel.proj.steps;
 
 import co.uk.gel.config.SeleniumDriver;
+import co.uk.gel.lib.SeleniumLib;
 import co.uk.gel.proj.pages.Pages;
 import co.uk.gel.proj.util.Debugger;
-import co.uk.gel.lib.SeleniumLib;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -49,6 +49,7 @@ public class TestHooks  extends Pages {
     }
     @After(order=1)
     public void afterScenario(){
+        driver.navigate().refresh();
         //login_page.logoutFromMI();
     }
 }//end class

@@ -7,13 +7,13 @@ import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(format = {"pretty", "html:target/cucumber","json:target/cucumber.json",},
-        tags="@general",features = {"src/test/Resources/features"})
-    public class TestRunner {
+@CucumberOptions(format = {"pretty", "html:target/cucumber", "json:target/cucumber.json",},
+        tags = "@login", features = {"src/test/Resources/features"})
+public class TestRunner {
 
-        @BeforeClass
-        public static void setup() {
-            Debugger.println("\n******* RUN STARTS " + new java.util.Date() + " *******************************");
-        }
+    @BeforeClass
+    public static void setup() {
+        Debugger.println("\n******* RUN STARTS " + new java.util.Date() + " *******************************");
+    }
 
-    }//end
+}//endF

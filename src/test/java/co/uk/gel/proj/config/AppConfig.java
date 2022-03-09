@@ -9,9 +9,12 @@ import java.util.Scanner;
  * Created by SANTHOSH LP on 4/26/2019.
  */
 public class AppConfig {
-    private static String app_url;
+
     private static String app_username;
     private static String app_password;
+    private static String appURL;
+    private static String app_version;
+    private static String home_page_url;
 
     public static void loadAppConfig(){
         Scanner file_scanner	= loadFile("AppConfig.txt");
@@ -29,12 +32,16 @@ public class AppConfig {
             if(linearray == null || linearray.length != 2){
                 continue;
             }
-            if(linearray[0].trim().equalsIgnoreCase("APP_URL")){
-                app_url = linearray[1].trim();
-            }else if(linearray[0].trim().equalsIgnoreCase("APP_USERNAME")){
+            if (linearray[0].trim().equalsIgnoreCase("APP_URL")){
+                appURL = linearray[1].trim();
+            }else if (linearray[0].trim().equalsIgnoreCase("APP_USERNAME")){
                 app_username = linearray[1].trim();
-            }else if(linearray[0].trim().equalsIgnoreCase("APP_PASSWORD")){
+            } else if (linearray[0].trim().equalsIgnoreCase("APP_PASSWORD")){
                 app_password = linearray[1].trim();
+            }else if (linearray[0].trim().equalsIgnoreCase("APP_VERSION")){
+                app_version = linearray[1].trim();
+            }else if (linearray[0].trim().equalsIgnoreCase("HOME_PAGE_URL")){
+                home_page_url = linearray[1].trim();
             }
         }
     }
@@ -51,16 +58,19 @@ public class AppConfig {
         return null;
     }
 
-    public static String getApp_url() {
-        if(app_url == null || app_url.isEmpty()){
+    public static String getAppURL() {
+        if(appURL == null || appURL.isEmpty()){
             loadAppConfig();
         }
-        return app_url;
+        return appURL;
+    }
+    public static String getHomePageURL() {
+        if(home_page_url == null || home_page_url.isEmpty()){
+            loadAppConfig();
+        }
+        return home_page_url;
     }
 
-    public static void setApp_url(String app_url) {
-        AppConfig.app_url = app_url;
-    }
 
     public static String getApp_username() {
         return app_username;
@@ -77,4 +87,9 @@ public class AppConfig {
     public static void setApp_password(String app_password) {
         AppConfig.app_password = app_password;
     }
+
+    public static String getApp_version(){return app_version;}
+
+    public static void setApp_version(){ AppConfig.app_version = app_version;}
+
 }//end
