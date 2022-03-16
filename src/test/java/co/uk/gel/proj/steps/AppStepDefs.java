@@ -276,27 +276,4 @@ public class AppStepDefs extends Pages {
         homePage.navigatesToProject(project);
     }
 
-    @And("^the user clicks on (.*) in frequent releases$")
-    public void theUserClicksOnLabKey_tableInFrequentReleases(String table) {
-        Debugger.println("theUserClicksOnLabKey_tableInFrequentReleases");
-        frequentRelease.clickOnTable(table);
-    }
-
-    @Then("^the field of (.*) table in LabKey frequent releases should same as retrieved from Data Dictionary$")
-    public void theFieldOfLabKey_tableTableInLabKeyFrequentReleasesShouldSameAsRetrievedFromDataDictionary(String table) {
-        Debugger.println("theFieldOfLabKey_tableTableInLabKeyFrequentReleasesShouldSameAsRetrievedFromDataDictionary"+table);
-        boolean test_result = false;
-        List<String> UIField = frequentRelease.getUIField();
-        Debugger.println("UI: size "+UIField.size());
-        Debugger.println("DATA DICTIONARY: "+dataDictionaryReader.fieldList.size());
-        Debugger.println("UI: "+UIField.size()+" : " + UIField.toString());
-        Debugger.println("DATA DICTIONARY: "+dataDictionaryReader.fieldList.size()+" : "  + dataDictionaryReader.fieldList.toString());
-        if (!UIField.containsAll(dataDictionaryReader.fieldList)) {
-            Debugger.println("FAIL");
-            test_result = true;
-        } else {
-            Debugger.println("PASS");
-        }
-        Assert.assertFalse("UI: " + UIField.toString() + " \n DATA DICTIONARY: " + dataDictionaryReader.fieldList.toString(), test_result);
-    }
 }//end

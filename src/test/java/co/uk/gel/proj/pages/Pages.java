@@ -14,7 +14,6 @@ public class Pages {
     protected AppHomePage appHomePage;
     protected LabKeyPage labKeyPage;
     protected HomePage homePage;
-    protected FrequentRelease frequentRelease;
     protected MainProgramme mainProgramme;
     protected DataDictionaryReader dataDictionaryReader;
     protected DataTypeReader dataTypeReader;
@@ -32,7 +31,6 @@ public class Pages {
         labKeyPage = PageFactory.initElements(driver, LabKeyPage.class);
         homePage = PageFactory.initElements(driver, HomePage.class);
         mainProgramme = PageFactory.initElements(driver, MainProgramme.class);
-        frequentRelease = PageFactory.initElements(driver, FrequentRelease.class);
         dataDictionaryReader = PageFactory.initElements(driver, DataDictionaryReader.class);
         dataTypeReader = PageFactory.initElements(driver, DataTypeReader.class);
         dataExcelReader = PageFactory.initElements(driver, DataExcelReader.class);
