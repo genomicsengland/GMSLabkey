@@ -13,12 +13,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class MainProgramme {
+public class GMS {
 
     private WebDriver driver;
     private SeleniumLib seleniumLib;
 
-    public MainProgramme(WebDriver driver) {
+    public GMS(WebDriver driver) {
         this.driver = driver;
         seleniumLib = new SeleniumLib(driver);
     }
@@ -41,7 +41,7 @@ public class MainProgramme {
     public String navigatesToVersion() {
         try {
             SeleniumLib.sleepInSeconds(3);
-            By versionPath = By.xpath("//span[contains(text(),'main-programme_v" + AppConfig.getApp_version() + "_')]");
+            By versionPath = By.xpath("//span[contains(text(),'gms-release-" +AppConfig.getApp_version()+"')]");
 //            By versionPath = By.xpath("//span[contains(text(),'main-programme_v" + version + "_')]");
            SeleniumLib.waitForElementVisible(versionPath);
             if (!seleniumLib.isElementPresent(versionPath)) {

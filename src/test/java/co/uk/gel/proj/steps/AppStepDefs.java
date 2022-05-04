@@ -52,13 +52,13 @@ public class AppStepDefs extends Pages {
 
     @And("^the user navigates to version (.*) project of main programme$")
     public void theUserNavigatesToVersionProjectOfMainProgramme(String version) {
-        mainProgramme.navigatesToVersion(version);
+        gms.navigatesToVersion(version);
     }
 
-    @And("^the user navigates to current version project of main programme$")
-    public void theUserNavigatesToCurrentVersionProjectOfMainProgramme() {
+    @And("^the user navigates to current version project of gms$")
+    public void theUserNavigatesToCurrentVersionProjectOfGms() {
         boolean testResult = false;
-       String vMessage =  mainProgramme.navigatesToVersion();
+       String vMessage =  gms.navigatesToVersion();
        if (!vMessage.equalsIgnoreCase("Success")){
            Debugger.println(vMessage);
            testResult = false;
@@ -71,7 +71,7 @@ public class AppStepDefs extends Pages {
 
     @And("^the user clicks on (.*) table$")
     public void theUserClicksOnCancer_analysisTable(String table) {
-        mainProgramme.clickOnTable(table);
+        gms.clickOnTable(table);
     }
 
     @And("^the user retrieves the field from data dictionary for (.*) table$")
@@ -84,7 +84,7 @@ public class AppStepDefs extends Pages {
     @Then("^the field of (.*) table in LabKey should same as retrieved from Data Dictionary$")
     public void theFieldOfCancer_analysisTableInLabKeyShouldSameAsRetrievedFromDataDictionary(String table) {
         boolean test_result = false;
-        List<String> UIField = mainProgramme.getUIField();
+        List<String> UIField = gms.getUIField();
         Debugger.println("UI: size "+UIField.size());
         Debugger.println("DATA DICTIONARY: "+dataDictionaryReader.fieldList.size());
         Debugger.println("UI: "+UIField.size()+" : " + UIField.toString());
@@ -103,7 +103,7 @@ public class AppStepDefs extends Pages {
     public void theParticipantCountOnTheDashboardForCancer_analysisTableIsSameAsTheRetrievedValue(String table) {
         boolean test_result = false;
         String result = "";
-        int participantCount = mainProgramme.getParticipantCount();
+        int participantCount = gms.getParticipantCount();
         Debugger.println("UI Count : " + participantCount);
         Debugger.println("DB Count : " + DBStepDefs.participantCount);
         if (participantCount != DBStepDefs.participantCount) {
@@ -140,7 +140,7 @@ public class AppStepDefs extends Pages {
 
     @And("^the user downloads the (.*) sheet$")
     public void theUserDownloadsTheAggregate_gvcf_sample_statsSheet(String file) {
-        mainProgramme.exportToExcel();
+        gms.exportToExcel();
     }
 
 
@@ -178,7 +178,7 @@ public class AppStepDefs extends Pages {
 
     @And("^the user navigates to start page$")
     public void theUserNavigatesToStartPage() {
-        mainProgramme.navigatesToMainProgramme();
+        gms.navigatesToMainProgramme();
     }
 
 

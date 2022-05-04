@@ -5,8 +5,8 @@ Feature: Validation Performed for GMS referral_participant table against the Dat
   Scenario Outline: Validation Performed for Field in referral_participant table against the Data Dictionary
     Given the user launches the Labkey application
     And the user is logged into Labkey
-    When the user navigates to main-programme project
-    And the user navigates to current version project of main programme
+    When the user navigates to gms project
+    And the user navigates to current version project of gms
     And the user clicks on <labKey_table> table
     And the user retrieves the field from data dictionary for <data_dictionary_table> table
     Then the field of <labKey_table> table in LabKey should same as retrieved from Data Dictionary

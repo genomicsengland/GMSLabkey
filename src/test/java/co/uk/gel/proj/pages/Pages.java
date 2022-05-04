@@ -14,7 +14,7 @@ public class Pages {
     protected AppHomePage appHomePage;
     protected LabKeyPage labKeyPage;
     protected HomePage homePage;
-    protected MainProgramme mainProgramme;
+    protected GMS gms;
     protected DataDictionaryReader dataDictionaryReader;
     protected DataTypeReader dataTypeReader;
     protected DataExcelReader dataExcelReader;
@@ -30,7 +30,7 @@ public class Pages {
         appHomePage = PageFactory.initElements(driver, AppHomePage.class);
         labKeyPage = PageFactory.initElements(driver, LabKeyPage.class);
         homePage = PageFactory.initElements(driver, HomePage.class);
-        mainProgramme = PageFactory.initElements(driver, MainProgramme.class);
+        gms = PageFactory.initElements(driver, GMS.class);
         dataDictionaryReader = PageFactory.initElements(driver, DataDictionaryReader.class);
         dataTypeReader = PageFactory.initElements(driver, DataTypeReader.class);
         dataExcelReader = PageFactory.initElements(driver, DataExcelReader.class);
