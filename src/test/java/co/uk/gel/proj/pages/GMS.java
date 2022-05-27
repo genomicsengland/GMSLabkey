@@ -108,7 +108,7 @@ public class GMS {
         }
     }
 
-    public int getParticipantCount() {
+    public int getPatientCount() {
         try {
             By countPath = By.xpath("(//div[@class='labkey-pagination'])[1]/div/a");
             if (!seleniumLib.isElementPresent(countPath)) {
