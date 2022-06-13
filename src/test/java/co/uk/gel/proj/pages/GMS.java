@@ -41,7 +41,7 @@ public class GMS {
     public String navigatesToVersion() {
         try {
             SeleniumLib.sleepInSeconds(3);
-            By versionPath = By.xpath("//span[contains(text(),'gms-release-" +AppConfig.getApp_version()+"')]");
+            By versionPath = By.xpath("//span[contains(text(),'gms-release_v" +AppConfig.getApp_version()+"')]");
 //            By versionPath = By.xpath("//span[contains(text(),'main-programme_v" + version + "_')]");
            SeleniumLib.waitForElementVisible(versionPath);
             if (!seleniumLib.isElementPresent(versionPath)) {
@@ -61,7 +61,8 @@ public class GMS {
     public void clickOnTable(String table) {
         try {
             SeleniumLib.sleepInSeconds(3);
-            By tablePath = By.xpath("//span[contains(@class,'dataview-icon')]/following-sibling::a[text()='" + table + "']");
+           // By tablePath = By.xpath("//span[contains(@class,'dataview-icon')]/following-sibling::a[text()='" + table + "']");
+            By tablePath = By.xpath("//a[contains(text(),'" + table + "')]");
             if (!seleniumLib.isElementPresent(tablePath)) {
                 seleniumLib.waitForElementVisible(tablePath);
                 Debugger.println("Table is NOT available " + table);
@@ -108,7 +109,7 @@ public class GMS {
         }
     }
 
-    public int getPatientCount() {
+    public int getparticipantCount() {
         try {
             By countPath = By.xpath("(//div[@class='labkey-pagination'])[1]/div/a");
             if (!seleniumLib.isElementPresent(countPath)) {

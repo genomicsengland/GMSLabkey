@@ -1,4 +1,4 @@
-@DataDictionary_2
+@DataDictionary
 
 @DRVA_1237
 Feature: Validation Performed for GMC Exit Questionnaire table against the Data Dictionary
@@ -16,14 +16,14 @@ Feature: Validation Performed for GMC Exit Questionnaire table against the Data 
       | data_dictionary_table  | labKey_table           |
       | Gmc_exit_questionnaire | gmc_exit_questionnaire |
 
-  Scenario Outline: Validation Performed for Patient count in GMC Exit Questionnaire table against the LabKey Database
+  Scenario Outline: Validation Performed for participant count in GMC Exit Questionnaire table against the LabKey Database
     Given the user launches the Labkey application
     And the user is logged into Labkey
     When the user navigates to gms project
     And the user navigates to current version project of gms
     And the user clicks on <labKey_table> table
-    When the user retrieves the number of patients for <labKey_table> from the database
-    Then the patient count on the dashboard for <labKey_table> table is same as the retrieved value
+    When the user retrieves the number of participants for <labKey_table> from the database
+    Then the participant count on the dashboard for <labKey_table> table is same as the retrieved value
 
     Examples:
       | labKey_table           |

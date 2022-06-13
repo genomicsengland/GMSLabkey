@@ -1,4 +1,5 @@
 @RuleValidation
+@DRVA_1234
 
 Feature: referral_id in non-reference table should start with rr
   Scenario: referral_id in non-reference table should start with rr

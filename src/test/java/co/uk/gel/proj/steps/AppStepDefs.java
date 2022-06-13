@@ -99,14 +99,14 @@ public class AppStepDefs extends Pages {
     }
 
 
-    @Then("^the patient count on the dashboard for (.*) table is same as the retrieved value$")
-    public void thePatientCountOnTheDashboardForCancer_analysisTableIsSameAsTheRetrievedValue(String table) {
+    @Then("^the participant count on the dashboard for (.*) table is same as the retrieved value$")
+    public void theparticipantCountOnTheDashboardForCancer_analysisTableIsSameAsTheRetrievedValue(String table) {
         boolean test_result = false;
         String result = "";
-        int patientCount = gms.getPatientCount();
-        Debugger.println("UI Count : " + patientCount);
-        Debugger.println("DB Count : " + DBStepDefs.patientCount);
-        if (patientCount != DBStepDefs.patientCount) {
+        int participantCount = gms.getparticipantCount();
+        Debugger.println("UI Count : " + participantCount);
+        Debugger.println("DB Count : " + DBStepDefs.participantCount);
+        if (participantCount != DBStepDefs.participantCount) {
             Debugger.println("FAIL");
             test_result = true;
             result = "FAIL";
@@ -114,8 +114,8 @@ public class AppStepDefs extends Pages {
             result = "PASS";
             Debugger.println("PASS");
         }
-        Report.println(TestHooks.currentTagName + " " + TestHooks.currentFeature + " UI: " + patientCount + " DB: " + DBStepDefs.patientCount + " " + result);
-        Assert.assertFalse("UI: " + patientCount + " \n DB: " + DBStepDefs.patientCount, test_result);
+        Report.println(TestHooks.currentTagName + " " + TestHooks.currentFeature + " UI: " + participantCount + " DB: " + DBStepDefs.participantCount + " " + result);
+        Assert.assertFalse("UI: " + participantCount + " \n DB: " + DBStepDefs.participantCount, test_result);
     }
 
 

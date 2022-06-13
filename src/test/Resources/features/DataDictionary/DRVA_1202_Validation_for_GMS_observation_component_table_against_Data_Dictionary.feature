@@ -1,4 +1,4 @@
-@DataDictionary_1
+@DataDictionary
 @DRVA_1202
 
 Feature: Validation Performed for GMS observation_component table against the Data Dictionary

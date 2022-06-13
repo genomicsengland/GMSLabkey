@@ -1,4 +1,4 @@
-@DataDictionary_1
+@DataDictionary
 
 @DRVA_1243
 Feature: Validation Performed for Tiered Variants Frequency table against the Data Dictionary
@@ -21,8 +21,8 @@ Feature: Validation Performed for Tiered Variants Frequency table against the Da
     When the user navigates to gms project
     And the user navigates to current version project of gms
     And the user clicks on <labKey_table> table
-    When the user retrieves the number of patients for <labKey_table> from the database
-    Then the patient count on the dashboard for <labKey_table> table is same as the retrieved value
+    When the user retrieves the number of participants for <labKey_table> from the database
+    Then the participant count on the dashboard for <labKey_table> table is same as the retrieved value
 
     Examples:
       | labKey_table              |

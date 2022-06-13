@@ -1,4 +1,4 @@
-@DataDictionary_1
+@DataDictionary
 @DRVA_1210
 
 Feature: Validation Performed for GMS tumour_morphology table against the Data Dictionary

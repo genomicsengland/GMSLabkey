@@ -1,8 +1,8 @@
-@DataDictionary_2
+@DataDictionary
 
 @DRVA_1247
-Feature: Validation Performed for Genome File Paths And Types table against the Data Dictionary for v10
-  Scenario Outline: Validation Performed for Field in Genome File Paths And Types table against the Data Dictionary for v10
+Feature: Validation Performed for Genome File Paths And Types table against the Data Dictionary
+  Scenario Outline: Validation Performed for Field in Genome File Paths And Types table against the Data Dictionary
     Given the user launches the Labkey application
     And the user is logged into Labkey
     When the user navigates to gms project
@@ -21,8 +21,8 @@ Feature: Validation Performed for Genome File Paths And Types table against the 
     When the user navigates to gms project
     And the user navigates to current version project of gms
     And the user clicks on <labKey_table> table
-    When the user retrieves the number of patients for <labKey_table> from the database
-    Then the patient count on the dashboard for <labKey_table> table is same as the retrieved value
+    When the user retrieves the number of participants for <labKey_table> from the database
+    Then the participant count on the dashboard for <labKey_table> table is same as the retrieved value
 
     Examples:
       | labKey_table                |

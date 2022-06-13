@@ -1,23 +1,22 @@
 @RuleValidation
-
 @DRVA_1241
 
-Feature: patient_id of panels_applied must exist in patient table
+Feature: participant_id of panels_applied must exist in participant table
 
-  Scenario: patient_id of panels_applied must exist in patient table
+  Scenario: participant_id of panels_applied must exist in participant table
     Given the user launches the Labkey application
     When the user retrieves the count of following column from panels_applied table from database
       | column         |
-      | patient_id |
-    Then the retrieved column of panels_applied must exist in following patient table
+      | participant_id |
+    Then the retrieved column of panels_applied must exist in following participant table
       | column         |
-      | patient_id |
+      | participant_id |
 
-    Scenario: rare_diseases_family_id of panels_applied must exist in patient table
+    Scenario: referral_id of panels_applied must exist in participant table
     Given the user launches the Labkey application
-    Then user executes query by using panels_applied patient tables and Query result must be 0
+    Then user executes query by using panels_applied participant tables and Query result must be 0
       | column                  |
-      | rare_diseases_family_id |
+      | referral_id |
 
 #########################################################################################
 # "all tables except:

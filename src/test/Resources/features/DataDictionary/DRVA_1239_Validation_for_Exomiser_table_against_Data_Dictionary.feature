@@ -1,4 +1,4 @@
-@DataDictionary_1
+@DataDictionary
 
 @DRVA_1239
 Feature: Validation Performed for Exomiser table against the Data Dictionary
@@ -16,14 +16,14 @@ Feature: Validation Performed for Exomiser table against the Data Dictionary
       | data_dictionary_table | labKey_table |
       | Exomiser              | exomiser     |
 
-  Scenario Outline: Validation Performed for Patient count in Exomiser table against the LabKey Database
+  Scenario Outline: Validation Performed for participant count in Exomiser table against the LabKey Database
     Given the user launches the Labkey application
     And the user is logged into Labkey
     When the user navigates to gms project
     And the user navigates to current version project of gms
     And the user clicks on <labKey_table> table
-    When the user retrieves the number of patients for <labKey_table> from the database
-    Then the patient count on the dashboard for <labKey_table> table is same as the retrieved value
+    When the user retrieves the number of participants for <labKey_table> from the database
+    Then the participant count on the dashboard for <labKey_table> table is same as the retrieved value
 
     Examples:
       | labKey_table |

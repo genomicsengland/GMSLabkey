@@ -1,4 +1,5 @@
 @RuleValidation
+@DRVA_1236
 
 Feature: sample_id of plated sample must exist in sample table
   Scenario: sample_id of plated sample must exist in sample table

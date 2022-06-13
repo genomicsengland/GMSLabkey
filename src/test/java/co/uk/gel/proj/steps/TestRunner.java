@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(format = {"pretty", "html:target/cucumber", "json:target/cucumber.json",},
-        tags = "@DRVA_1200", features = {"src/test/Resources/features"})
+        tags = "@DRVA_1243", features = {"src/test/Resources/features"})
 public class TestRunner {
 
     @BeforeClass
@@ -16,4 +16,4 @@ public class TestRunner {
         Debugger.println("\n******* RUN STARTS " + new java.util.Date() + " *******************************");
     }
 
-}//endF
+}//end

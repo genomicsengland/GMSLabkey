@@ -1,4 +1,4 @@
-@DataDictionary_1
+@DataDictionary
 @DRVA_1208
 
 Feature: Validation Performed for GMS sample table against the Data Dictionary

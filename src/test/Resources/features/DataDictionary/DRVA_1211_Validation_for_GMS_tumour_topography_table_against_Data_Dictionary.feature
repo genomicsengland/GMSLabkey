@@ -1,4 +1,4 @@
-@DataDictionary_1
+@DataDictionary
 @DRVA_1211
 
 Feature: Validation Performed for GMS tumour_topography table against the Data Dictionary

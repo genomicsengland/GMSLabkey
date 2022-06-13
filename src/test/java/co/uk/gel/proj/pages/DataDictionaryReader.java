@@ -187,7 +187,7 @@ public class DataDictionaryReader {
                     dataType = "varchar";
                 } else if (dataType.equalsIgnoreCase("plateid, xs:string") || dataType.equalsIgnoreCase("wellid, xs:string")){
                     dataType = "varchar";
-                } else if (dataType.equalsIgnoreCase("string")) {
+                } else if (dataType.equalsIgnoreCase("string") || dataType.equalsIgnoreCase("varchar")) {
                     dataType = "varchar";
 //                } else if (dataType.equalsIgnoreCase("maxLength(12) && minLength(3)")) {
 //                    dataType = "Integer";

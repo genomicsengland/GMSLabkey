@@ -21,24 +21,24 @@ import java.util.TreeSet;
 
 public class DBStepDefs {
 
-    static int patientCount = 0;
+    static int participantCount = 0;
     ResultSet rs = null;
     ArrayList familyIdList = new ArrayList();
 
-    @When("^the user retrieves the number of patients for (.*) from the database$")
-    public void theUserRetrievesTheNumberOfPatientsForCancer_analysisFromTheDatabase(String table) {
+    @When("^the user retrieves the number of participants for (.*) from the database$")
+    public void theUserRetrievesTheNumberOfparticipantsForCancer_analysisFromTheDatabase(String table) {
         try {
-            String query = DBQueries.getPatientCount(table);
+            String query = DBQueries.getParticipantCount(table);
             Debugger.println("Query : " + query);
             int count;
             ResultSet rs = DBQueryExecuter.executeQuery(query);
             if (rs.next()) {
                 count = rs.getInt("count");
-                Debugger.println("Patient count for Table '" + table + "' = " + count);
-                patientCount = count;
+                Debugger.println("participant count for Table '" + table + "' = " + count);
+                participantCount = count;
             }
         } catch (Exception e) {
-            Debugger.println("Could not retrieve patient count for Table '" + table + "': exception " + e);
+            Debugger.println("Could not retrieve participant count for Table '" + table + "': exception " + e);
         }
     }
 
@@ -60,7 +60,7 @@ public class DBStepDefs {
             while (rs.next()) {
                 count = rs.getInt("count");
                 Debugger.println("Count for Table '" + table + "' = " + count);
-                patientCount = count;
+                participantCount = count;
             }
         } catch (Exception e) {
             Debugger.println("Could not retrieve data : exception " + e);
@@ -68,7 +68,7 @@ public class DBStepDefs {
     }
 
     @Then("^the retrieved column of (.*) must exist in following (.*) table$")
-    public void theRetrievedColumnOfMhldds_episodeMustExistInForPatientTable(String table1, String table2, DataTable inp_data) {
+    public void theRetrievedColumnOfMhldds_episodeMustExistInForparticipantTable(String table1, String table2, DataTable inp_data) {
         boolean test_result = false;
         try {
             String column = "";
@@ -87,11 +87,11 @@ public class DBStepDefs {
                 count = rs.getInt("count");
                 Debugger.println("selected column count = " + count);
             }
-            if (count != patientCount) {
-                Debugger.println("All existing count is " + patientCount + ", Desired count " + count);
+            if (count != participantCount) {
+                Debugger.println("All existing count is " + participantCount + ", Desired count " + count);
                 test_result = true;
             }
-            Assert.assertFalse("All existing count is " + patientCount + ", Desired count " + count, test_result);
+            Assert.assertFalse("All existing count is " + participantCount + ", Desired count " + count, test_result);
 
         } catch (Exception e) {
             Debugger.println("Could not retrieve data : exception " + e);
@@ -99,12 +99,12 @@ public class DBStepDefs {
         }
 
     }
-    @Then("the retrieved column of GMS condition must exist in following patient table")
-    public void theRetrievedColumnOfGMSConditionMustExistInFollowingPatientTable() {
+    @Then("the retrieved column of GMS condition must exist in following participant table")
+    public void theRetrievedColumnOfGMSConditionMustExistInFollowingparticipantTable() {
     }
 
     @And("^the user retrieves zero count of following column from (.*)table from database$")
-    public void theUserRetrievesZeroCountOfFollowingColumnFromPatientTableFromDatabase(String table, DataTable inp_data) {
+    public void theUserRetrievesZeroCountOfFollowingColumnFromparticipantTableFromDatabase(String table, DataTable inp_data) {
         boolean testResult = false;
         int count =0;
         try{
@@ -179,12 +179,12 @@ public class DBStepDefs {
             String query = DBQueries.getUniqueCombinationCount(column, table);
             Debugger.println("Query : " + query);
             rs = DBQueryExecuter.executeQuery(query);
-            String family_id;
+            //String family_id;
             int count = 0;
             while (rs.next()) {
                 count = rs.getInt("count");
-                Debugger.println("Patient count for Table '" + table + "' = " + count);
-                patientCount = count;
+                Debugger.println("participant count for Table '" + table + "' = " + count);
+                participantCount = count;
             }
         } catch (Exception e) {
             Debugger.println("Could not retrieve data : exception " + e);
@@ -211,12 +211,80 @@ public class DBStepDefs {
                 count = rs.getInt("count");
                 Debugger.println("selected column count = " + count);
             }
-            if (count != patientCount) {
-                Debugger.println("All participant count is " + patientCount + ", unique count " + count);
+            if (count != participantCount) {
+                Debugger.println("All participant count is " + participantCount + ", unique count " + count);
                 test_result = true;
             }
-            Assert.assertFalse("All participant count is " + patientCount + ", unique count " + count, test_result);
+            Assert.assertFalse("All participant count is " + participantCount + ", unique count " + count, test_result);
 
+        } catch (Exception e) {
+            Debugger.println("Could not retrieve data : exception " + e);
+            Assert.assertFalse("Could not retrieve data : exception ", true);
+        }
+    }
+
+    @When("^the user retrieves the count of all columns(.*) from the database$")
+    public void theUserRetrievesTheCountOfAllColumnsTableForFromTheDatabase(String table) {
+        Debugger.println("table = " + table);
+        try {
+            String query = DBQueries.getParticipantCount(table.trim());
+            Debugger.println("Query : " + query);
+            int count;
+            ResultSet rs = DBQueryExecuter.executeQuery(query);
+            if (rs.next()) {
+                count = rs.getInt("count");
+                Debugger.println("count for Table '" + table + "' = " + count);
+                participantCount = count;
+            }
+        } catch (Exception e) {
+            Debugger.println("Could not retrieve count for Table '" + table + "': exception " + e);
+        }
+
+    }
+
+    @And("^the user retrieves the count of desired columns of (.*) from the database must be unique$")
+    public void theUserRetrievesTheCountOfDesiredColumnsOfTableForFromTheDatabase(String table) throws SQLException, ClassNotFoundException {
+        List<String> data = new ArrayList<>();
+        String query = DBQueries.getQuery(table.trim());
+        ResultSet rs = DBQueryExecuter.executeQuery(query);
+        ResultSetMetaData rsMetaData = rs.getMetaData();
+        int numberOfColumns = rsMetaData.getColumnCount();
+        for (int i = 1; i < numberOfColumns + 1; i++) {
+            String columnName = rsMetaData.getColumnName(i);
+            Debugger.println("columnName :"+columnName);
+            if(!columnName.equalsIgnoreCase("modifiedby") && !columnName.equalsIgnoreCase("createdby")
+                    && !columnName.equalsIgnoreCase("container") && !columnName.equalsIgnoreCase("created")
+                    && !columnName.equalsIgnoreCase("modified") && !columnName.equalsIgnoreCase("lastindexed")
+                    && !columnName.equalsIgnoreCase("entityid") && !columnName.equalsIgnoreCase("key")) {
+                data.add(columnName);
+                String tableName = rsMetaData.getTableName(i);
+                Debugger.println(tableName + " : " + columnName);
+            }
+
+        }
+        Debugger.println("data = " + data);
+        String listString = "";
+
+        for (String s : data) {
+            listString += s + ",";
+        }
+        listString = listString.substring(0, listString.length() - 1);
+        System.out.println(listString);
+        try {
+            boolean test_result = false;
+            String querry = DBQueries.getCountOfAllColumnsFromATable(listString, table);
+            Debugger.println("Query : " + querry);
+            rs = DBQueryExecuter.executeQuery(querry);
+            int count = 0;
+            if (rs.next()) {
+                count = rs.getInt("count");
+                Debugger.println("selected column count = " + count);
+            }
+            if (count != participantCount) {
+                Debugger.println("All participant count is " + participantCount + ", unique count " + count);
+                test_result = true;
+            }
+            Assert.assertFalse("All participant count is " + participantCount + ", unique count " + count, test_result);
         } catch (Exception e) {
             Debugger.println("Could not retrieve data : exception " + e);
             Assert.assertFalse("Could not retrieve data : exception ", true);

@@ -1,4 +1,5 @@
 @RuleValidation
+@DRVA_1235
 
 Feature: sample_id in non-reference table should start with ss
   Scenario: sample_id in non-reference table should start with ss

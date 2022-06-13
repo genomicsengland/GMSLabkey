@@ -5,15 +5,68 @@ import co.uk.gel.proj.util.Debugger;
 public class DBQueries {
     private static String query = "";
 
-    private static String cancerAnalysisTable = "list.c205d7634_cancer_analysis";
-    private static String rareDiseaseAnalysisTable = "list.c205d7640_rare_disease_analysis";
+    private static String conditionTable = "list.c213d8104_condition";
+    private static String tumourMorphologyTable = "list.c213d8102_tumour_morphology";
+    private static String tumourTopographyTable = "list.c213d8103_tumour_topography";
+    private static String observationComponentTable = "list.c213d8105_observation_component";
+    private static String observationTable = "list.c213d8106_observation";
+    private static String participantTable = "list.c213d8114_participant";
+    private static String referralParticipantTable = "list.c213d8108_referral_participant";
+    private static String referralTestTable = "list.c213d8109_referral_test";
+    private static String referralTable = "list.c213d8110_referral";
+    private static String tumourTable = "list.c213d8111_tumour";
+    private static String platedSampleTable = "list.c213d8112_plated_sample";
+    private static String sampleTable = "list.c213d8113_sample";
+    private static String exomiserTable = "list.c213d8115_exomiser";
+    private static String genomeFilePathAndTypesTable = "list.c213d8116_genome_file_paths_and_types";
+    private static String gmcExitQuestionnaireTable = "list.c213d8117_gmc_exit_questionnaire";
+    private static String panelsAppliedTable = "list.c213d8118_panels_applied";
+    private static String sequencingReportTable = "list.c213d8119_sequencing_report";
+    private static String tieredVariantsFrequencyTable= "list.c213d8121_tiered_variants_frequency";
+    private static String tieringDataTable = "list.c213d8122_tiering_data";
+
 
     public static String tableNameMatches(String table) {
         Debugger.println("searching for " + table);
-        if (table.equalsIgnoreCase("Cancer_analysis")) {
-            table = cancerAnalysisTable;
-        } else if (table.equalsIgnoreCase("rareDiseaseAnalysisTable")) {
-            table = rareDiseaseAnalysisTable;
+        table=table.trim();
+        if (table.equalsIgnoreCase("condition")) {
+            table = conditionTable;
+        } else if (table.equalsIgnoreCase("tumour_morphology")) {
+            table = tumourMorphologyTable;
+        } else if (table.equalsIgnoreCase("tumour_topography")) {
+            table = tumourTopographyTable;
+        } else if (table.equalsIgnoreCase("observation_component")) {
+            table = observationComponentTable;
+        } else if (table.equalsIgnoreCase("observation")) {
+            table = observationTable;
+        } else if (table.equalsIgnoreCase("participant")) {
+            table = participantTable;
+        } else if (table.equalsIgnoreCase("referral_participant")) {
+            table = referralParticipantTable;
+        } else if (table.equalsIgnoreCase("referral_test")) {
+            table = referralTestTable;
+        } else if (table.equalsIgnoreCase("referral")) {
+            table = referralTable;
+        }  else if (table.equalsIgnoreCase("tumour")) {
+            table = tumourTable;
+        } else if (table.equalsIgnoreCase("exomiser")) {
+            table = exomiserTable;
+        }  else if (table.equalsIgnoreCase("genome_file_paths_and_types")) {
+            table = genomeFilePathAndTypesTable;
+        } else if (table.equalsIgnoreCase("gmc_exit_questionnaire")) {
+            table = gmcExitQuestionnaireTable;
+        }  else if (table.equalsIgnoreCase("panels_applied")) {
+            table = panelsAppliedTable;
+        }  else if (table.equalsIgnoreCase("sequencing_report")) {
+            table = sequencingReportTable;
+        } else if (table.equalsIgnoreCase("tiered_variants_frequency")) {
+            table = tieredVariantsFrequencyTable;
+        }  else if (table.equalsIgnoreCase("tiering_data")) {
+            table = tieringDataTable;
+        } else if (table.equalsIgnoreCase("plated_sample")) {
+            table = platedSampleTable;
+        }  else if (table.equalsIgnoreCase("sample")) {
+            table = sampleTable;
         }
         return table;
     }
@@ -48,7 +101,7 @@ public class DBQueries {
         return query;
     }
 
-    public static String getPatientCount(String table) {
+    public static String getParticipantCount(String table) {
         String tableName = tableNameMatches(table);
         Debugger.println("table Name = " + tableName);
         query = "select count(*) as count from " + tableName;
@@ -61,10 +114,9 @@ public class DBQueries {
         String tableName1 = tableNameMatches(table1);
         String tableName2 = tableNameMatches(table2);
 
-        //rare_diseases_family_id  and participant_id comparison for tables**
+        //referral_id  and participant_id comparison for tables**
         query = "select count(*) from " +tableName1 +"\n"+
-                "where cast(" +column + " as integer) not in (select cast(" +column + " as integer)  from " + tableName2 + "\n" +
-                "where " +column + " is not null) and " +column + " not in "+
+                 "where " +column + " not in "+
                 "(select " +column + " from " + tableName2 + ")";
         return query;
     }
@@ -80,17 +132,32 @@ public class DBQueries {
     public static String getCountOfparticipantlabSampleIdPlatekey(String table1, String table2) {
         String tableName1 = tableNameMatches(table1);
         String tableName2 = tableNameMatches(table2);
-        query = "select count(distinct (gfpt.participant_id,gfpt.lab_sample_id,gfpt.platekey,gfpt.delivery_id))\n" +
+        query = "select count(distinct (gfpt.participant_id,gfpt.platekey,gfpt.delivery_id))\n" +
                 "from \n" +
                 tableName1 + " gfpt\n" +
                 "inner join\n" +
                 tableName2 + " sr\n" +
                 "on gfpt.participant_id = sr.participant_id\n" +
-                "and gfpt.platekey = sr.plate_key\n" +
-                "and gfpt.delivery_id = sr.delivery_id\n" +
-                "and gfpt.lab_sample_id = sr.lab_sample_id";
+                "and gfpt.platekey = sr.platekey\n" +
+                "and gfpt.delivery_id = sr.delivery_id\n" ;
 
         Debugger.println(query);
+        return query;
+    }
+
+    public static String getQuery(String table) {
+        String tableN = tableNameMatches(table);
+        Debugger.println("table name = " + tableN);
+        query = "select *\n" +
+                "from " + tableN + " \n" +
+                "where false;";
+        return query;
+    }
+
+    public static String getCountOfAllColumnsFromATable(String listString, String table) {
+        String tableName = tableNameMatches(table);
+        Debugger.println("table Name = " + tableName);
+        query = "select count (distinct (" + listString + ")) from " + tableName;
         return query;
     }
 

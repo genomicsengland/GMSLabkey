@@ -1,6 +1,6 @@
-@DataDictionary_1
-
+@DataDictionary
 @DRVA_1201
+
 Feature: Validation Performed for GMS observation table against the Data Dictionary
   Scenario Outline: Validation Performed for Field in observation table against the Data Dictionary
     Given the user launches the Labkey application

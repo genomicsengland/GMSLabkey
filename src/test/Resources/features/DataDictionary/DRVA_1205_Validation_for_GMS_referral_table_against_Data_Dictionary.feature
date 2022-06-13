@@ -1,4 +1,4 @@
-@DataDictionary_1
+@DataDictionary
 @DRVA_1205
 
 Feature: Validation Performed for GMS referral table against the Data Dictionary

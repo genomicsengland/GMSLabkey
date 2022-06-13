@@ -1,6 +1,6 @@
-@DataDictionary_1
-
+@DataDictionary
 @DRVA_1200
+
 Feature: Validation Performed for GMS condition table against the Data Dictionary
   Scenario Outline: Validation Performed for Field in condition table against the Data Dictionary
     Given the user launches the Labkey application
