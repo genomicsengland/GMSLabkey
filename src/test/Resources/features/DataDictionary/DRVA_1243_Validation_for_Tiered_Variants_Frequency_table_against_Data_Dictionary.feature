@@ -5,7 +5,7 @@ Feature: Validation Performed for Tiered Variants Frequency table against the Da
   Scenario Outline: Validation Performed for Field in Tiered Variants Frequency table against the Data Dictionary
     Given the user launches the Labkey application
     And the user is logged into Labkey
-    When the user navigates to gms project
+    When the user navigates to nhs-gms project
     And the user navigates to current version project of gms
     And the user clicks on <labKey_table> table
     And the user retrieves the field from data dictionary for <data_dictionary_table> table

@@ -41,7 +41,7 @@ public class GMS {
     public String navigatesToVersion() {
         try {
             SeleniumLib.sleepInSeconds(3);
-            By versionPath = By.xpath("//span[contains(text(),'gms-release_v" +AppConfig.getApp_version()+"')]");
+            By versionPath = By.xpath("//span[contains(text(),'nhs-gms-release_v" +AppConfig.getApp_version()+"')]");
 //            By versionPath = By.xpath("//span[contains(text(),'main-programme_v" + version + "_')]");
            SeleniumLib.waitForElementVisible(versionPath);
             if (!seleniumLib.isElementPresent(versionPath)) {
